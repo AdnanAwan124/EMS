@@ -43,9 +43,10 @@ namespace EMS.Application.EmployeeModule.Queries.GetEmployeeList
                     DepartmentName = t.Department.Name,
                 })
                 .Where(t => string.IsNullOrEmpty(request.SearchKeyword) ||
-                t.Name.Contains(request.SearchKeyword) ||
-                t.Email.Contains(request.SearchKeyword) ||
-                t.DepartmentName.Contains(request.SearchKeyword)
+                t.Title.Contains(request.SearchKeyword, StringComparison.InvariantCultureIgnoreCase) ||
+                t.Name.Contains(request.SearchKeyword, StringComparison.InvariantCultureIgnoreCase) ||
+                t.Email.Contains(request.SearchKeyword, StringComparison.InvariantCultureIgnoreCase) ||
+                t.DepartmentName.Contains(request.SearchKeyword, StringComparison.InvariantCultureIgnoreCase)
                 ).ToListAsync();
 
             return employees;
