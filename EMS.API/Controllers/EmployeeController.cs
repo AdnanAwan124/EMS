@@ -36,11 +36,11 @@ namespace EMS.API.Controllers
 
         }
 
-        // PUT api/<EmployeeController>/5
+        // PUT api/<EmployeeController>
         [HttpPut]
         public async Task<IActionResult> Put(UpdateEmployeeCommand command)
         {
-            var responst = Mediator.Send(await Mediator.Send(command));
+            var responst = await Mediator.Send(command);
             return Ok(responst);
         }
 
